@@ -132,7 +132,111 @@
         </div>
 
         <!-- Termina info general -->
-        <!-- Empiezas las cards -->
+        <!-- Empieza calculadora de huella de carbon -->
+
+        <style>
+        
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-color: #f4f4f4;
+            }
+            h3 {
+            text-align: center;
+            }
+            .container2 {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            label {
+            display: block;
+            margin-bottom: 10px;
+            }
+            input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            }
+            button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+            button:hover {
+            background-color: #218838;
+            }
+            .result {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.5em;
+            }
+        </style>
+
+        <br>
+        <h3 style="text-align: center;">Calculador de huella de carbono (CO2)</h3>
+        <p class="fs-5" style="margin: 20px">En Colombia el factor de emisión de CO2 por 
+            generación eléctrica del Sistema Interconectado Nacional (SIN) es de 164.38 gramos 
+            de CO2 por kWh, lo que permite a empresas y hogares del país calcular su huella de 
+            carbono asociada al consumo de energía eléctrica. </p>
+        <p class="fs-5" style="margin: 20px">Para compensar la huella de carbono de 164.38 gramos de CO₂
+             equivalente por cada kWh de electricidad consumido, es necesario plantar árboles que absorban
+              una cantidad equivalente de CO₂. En promedio, un árbol puede absorber entre 10 y 30 kg de CO₂ al año.</p>
+        <p class="fs-5" style="margin: 20px">Para calcular la cantidad de árboles necesarios para compensar tu huella de carbono, 
+            ingresa tu consumo eléctrico mensual en kWh en el siguiente campo y presiona el botón "Calcular huella de carbono".</p>
+        <div class="container2">
+            <label for="consumo">Consumo Eléctrico Mensual (kWh):</label>
+            <input type="number" id="consumo" placeholder="Ingresa tu consumo en kWh" required>
+            <button onclick="calcularHuella()">Calcular huella de carbono</button>
+            <div class="result" id="resultado"></div>
+        </div>
+        <br>
+
+        <script>
+            function calcularHuella() {
+            const consumo = document.getElementById('consumo').value;
+            if (consumo && consumo > 0) {
+                const factorEmision = 0.16438; // kg CO₂ eq/kWh
+                const huellaCarbono = consumo * factorEmision;
+                document.getElementById('resultado').innerHTML = `Tu huella de carbono mensual es: ${huellaCarbono.toFixed(2)} kg CO₂ eq`;
+            } else {
+                document.getElementById('resultado').innerHTML = 'Por favor, ingresa un valor válido para el consumo eléctrico.';
+            }
+            }
+        </script>
+
+        <!-- Termina calculadora de huella de carbono -->
+        <!-- Empieza calculadora de arboles -->
+
+        <script>
+            function calcularHuella() {
+            const consumo = document.getElementById('consumo').value;
+            if (consumo && consumo > 0) {
+                const factorEmision = 0.16438; // kg CO₂ eq/kWh
+                const huellaCarbono = consumo * factorEmision;
+                const absorcionArbol = 20; // kg CO₂/año (promedio)
+                const arbolesNecesarios = huellaCarbono / absorcionArbol;
+                document.getElementById('resultado').innerHTML = `
+                <p>Tu huella de carbono mensual es: ${huellaCarbono.toFixed(2)} kg CO₂ eq</p>
+                <p>Para compensar esta huella, necesitarías plantar aproximadamente ${Math.ceil(arbolesNecesarios)} árbol(es).</p>
+                `;
+            } else {
+                document.getElementById('resultado').innerHTML = 'Por favor, ingresa un valor válido para el consumo eléctrico.';
+            }
+            }
+        </script>
+
+        <!-- Termina calculadora arboles -->
+        <!-- Empieza las cards -->
 
         <div class="row" style="padding: 0px 50px 0px 50px;">
             <div class="col">
